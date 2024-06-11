@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Funcionário</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style_tabela.css">
+</head>
+
+<script>
+	function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cname) === 0) {
+            return JSON.parse(c.substring(cname.length, c.length));
+        }
+    }
+    return null;
+}
+if(!getCookie('func')){
+
+	window.location.href='/index.html';
+
+}
+
+
+else if(getCookie('func')){
+    const func = getCookie('func');
+ 	
+    
+	//alert(func[0].Cargo);
+   	if(func[0].Cargo==2){
+		window.location.href='/funcionario.html';
+
+	}
+
+    }
+
+
+</script>
+
+<body>
+    <header>
+        <h1>Gestão Encomendas</h1>
+        
+        <div id="login-container">
+            <button id="login-button" class="bt_login" onclick="toggleLoginDropdown()">Login</button>
+            <button id="logout-button" class="bt_logout" style="display: none;" onclick="logout_f()">Logout</button>
+            <button id="client-button" class="bt_client" style="display: none;" onclick="client_bt()">A minha Conta</button>
+        </div>
+            
+        
+    </header>
+    <h1>Encomendas</h1>
+    
+    <table id="encomendasTable">
+        <thead>
+            <tr>
+                <th>Nº Encomenda</th>
+                <th>Data</th>
+                <th>Estado</th>
+                <th>Total</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        
+    </table>
+    <div id="extra_info"></div>
+
+
+
+
+
+</body>
+        
+
+<script src="scripts/script_login.js"></script>
+<script src="scripts/script_conta_func.js"></script>
+<script src="scripts/script_gestão_enc.js"></script>
+
+   
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Funcionário</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style_tabela.css">
+</head>
+
+<script>
+	function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cname) === 0) {
+            return JSON.parse(c.substring(cname.length, c.length));
+        }
+    }
+    return null;
+}
+if(!getCookie('func')){
+
+	window.location.href='/index.html';
+
+}
+
+
+else if(getCookie('func')){
+    const func = getCookie('func');
+ 	
+    
+	//alert(func[0].Cargo);
+   	if(func[0].Cargo==1){
+		window.location.href='/funcionario.html';
+
+	}
+
+    }
+
+
+</script>
+
+<body>
+    <header>
+        <h1>Gestão</h1>
+   
+        <div id="login-container">
+            <button id="login-button" class="bt_login" onclick="toggleLoginDropdown()">Login</button>
+            <button id="logout-button" class="bt_logout" style="display: none;" onclick="logout_f()">Logout</button>
+            <button id="client-button" class="bt_client" style="display: none;" onclick="func_bt()">A minha Conta</button>
+
+            
+	    <div id="login-dropdown" class="dropdown-content">
+            <!-- Conteúdo do dropdown de login -->
+            <form id="login-form">
+                
+            </form>
+            <button onclick="redirectToRegister()">Create Account</button>
+        </div>
+        </div>
+            
+        
+    </header>
+    
+        <form id="editForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name"><br><br>
+            
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email"><br><br>
+            
+                        
+
+            <input type="submit" value="Salvar">
+        </form>
+        <div class="navbar">
+            <a class="active" href="gestao.html" data-content="encomendas">Encomendas</a>
+            <a href="gestao_fornecedores.html" data-content="fornecedores">Fornecedores</a>
+            <a href="ficha_cliente.html" data-content="Ficha_cliente">Ficha Cliente</a>
+            
+          </div>
+	<div class="redirect-div">
+	<p><button id="redirectButton" class="redirect-button">
+        <span class="arrow"></span>Voltar
+	</button>
+	</p>
+
+	</div>
+
+        
+          <!-- Conteúdo da página -->
+          <div class="content" id="content">
+            <h2>Encomendas</h2>
+            <table id="encomendasTable">
+                <thead>
+                    <tr>
+                        <th>Nº Encomenda</th>
+                        <th>Data</th>
+                        <th>Estado</th>
+                        <th>Total</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                
+            </table>
+            <div id="extra_info"></div>
+            <div id="form-c" class="form-container" style="display: none;">
+                <form id="productForm">
+                  <div class="form-group">
+                    <label for="action">Ação:</label>
+                    <select id="action" name="action">
+                      <option value="insert">Inserir</option>
+                      <option value="update">Atualizar</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="product">Produto:</label>
+                    <select id="product" name="product">
+                      
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="quantity">Quantidade:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" required>
+                  </div>
+                  <button type="submit">Submeter</button>
+                </form>
+              </div>
+
+            
+          </div>
+       </body> 
+       
+
+
+
+<script src="scripts/script_login.js"></script>
+<script src="scripts/script_conta_func.js"></script>
+<script src="scripts/script_gestor.js"></script>
+
+   
+</html>

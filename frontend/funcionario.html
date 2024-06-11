@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Funcionário</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="style_tabela.css">
+</head>
+
+<script>
+	function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cname) === 0) {
+            return JSON.parse(c.substring(cname.length, c.length));
+        }
+    }
+    return null;
+}
+if(!getCookie('func')){
+
+	window.location.href='/index.html';
+
+}
+
+
+
+</script>
+
+<body>
+    <header>
+        <h1>Área Funcionário</h1>
+        <div id="login-container">
+            <button id="login-button" class="bt_login" onclick="toggleLoginDropdown()">Login</button>
+            <button id="logout-button" class="bt_logout" style="display: none;" onclick="logout_f()">Logout</button>
+            <button id="client-button" class="bt_client" style="display: none;" onclick="func_bt()">A minha Conta</button>
+
+            
+	    <div id="login-dropdown" class="dropdown-content">
+            <!-- Conteúdo do dropdown de login -->
+            <form id="login-form">
+                
+            </form>
+            <button onclick="redirectToRegister()">Create Account</button>
+        </div>
+        </div>
+            
+        
+    </header>
+    <body>
+        <form id="editForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name"><br><br>
+            
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email"><br><br>
+            
+                        
+
+            <input type="submit" value="Salvar">
+        </form>
+        
+        <div id="encomenda_pendentes">
+            <button id="Enc_pendentes" class="Enc_pendentes" onclick="g_encomendas()">Encomendas Pendentes</button>
+           
+        </div>
+        <div id="fornecedores">
+            <button id="fornecedores" class="fornecedores"  onclick="fornecedores()">Fornecedores</button>   
+        </div>
+        <div id="stock">
+            <button id="stock" class="stock"  onclick="stock()">Stock</button>   
+        </div>
+
+        <div id="gestor">
+            <button id="gestão" class="gestão"  onclick="gestao()">Gestão</button> 
+        </div>
+	<div id="registo-novo-func">
+            <button id="registo" class="registo" onclick="registo()">Registo Novo Func</button> 
+        </div>
+
+<script>
+
+if(getCookie('func')){
+    const func = getCookie('func');
+ 	
+    
+    if(func[0].Cargo==1){
+        const bt = document.getElementById('gestão');
+        bt.style.display ='none';
+	const bt_2 = document.getElementById('registo');
+        bt_2.style.display ='none';
+    }
+    else if(func[0].Cargo==2){
+        const bt = document.getElementById('fornecedores');
+        bt.style.display ='none';
+	const bt_2 = document.getElementById('encomenda_pendentes');
+        bt_2.style.display ='none';
+	const bt_3 = document.getElementById('registo');
+        bt_3.style.display ='none';
+
+
+    }
+
+
+}
+
+</script>
+
+
+<script src="scripts/script_login.js"></script>
+<script src="scripts/script_conta_func.js"></script>
+
+
+   
+</html>

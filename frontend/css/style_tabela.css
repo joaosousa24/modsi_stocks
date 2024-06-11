@@ -1,0 +1,70 @@
+/* Estilos Gerais da Tabela */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo das Células do Cabeçalho */
+thead th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Estilo das Células do Corpo */
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo das Últimas Células */
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Estilo das Linhas */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo do Rodapé */
+tfoot td {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: right;
+    font-weight: bold;
+    border-top: 2px solid #ddd;
+}
+
+/* Estilo dos Botões */
+button.bt_qnt {
+    border: none;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+button.bt_qnt:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo do Link */
+a {
+    margin: 0 10px;
+}

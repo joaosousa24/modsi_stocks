@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Cliente</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style_tabela.css">
+</head>
+<script>
+	function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cname) === 0) {
+            return JSON.parse(c.substring(cname.length, c.length));
+        }
+    }
+    return null;
+}
+if(!getCookie('user_id') && !getCookie('func')){
+
+	window.location.href='/index.html';
+
+}
+
+
+else if(getCookie('func')){
+    const func = getCookie('func');
+ 	
+    
+	//alert(func[0].Cargo);
+   	if(func[0].Cargo!=3){
+		window.location.href='/funcionario.html';
+
+	}
+
+    }
+
+
+</script>
+
+
+<body>
+    <header>
+        <h1>Área Cliente</h1>
+        <div class="cart-icon" onclick="toggleCartDropdown()">
+            🛒<span id="cart-count">0</span>
+        </div>
+        <div id="cart-dropdown" class="dropdown">
+            <ul id="cart-items"></ul>
+            <button onclick="finalizePurchase()">Finalizar Compra</button>
+        </div>
+        
+        <div id="login-container">
+            <button id="login-button" class="bt_login" onclick="toggleLoginDropdown()">Login</button>
+            <button id="logout-button" class="bt_logout" style="display: none;" onclick="logout_f()">Logout</button>
+            <button id="client-button" class="bt_client" style="display: none;" onclick="client_bt()">A minha Conta</button>
+
+            
+	    <div id="login-dropdown" class="dropdown-content">
+            <!-- Conteúdo do dropdown de login -->
+            <form id="login-form">
+                
+            </form>
+            <button onclick="redirectToRegister()">Create Account</button>
+        </div>
+        </div>
+            
+        
+    </header>
+    <body>
+        <form id="editForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name"><br><br>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            
+            <label for="nipc">NIPC:</label>
+            <input type="nipc" id="nipc" name="nipc"><br><br>
+            
+            <label for="morada">Morada:</label>
+            <input type="morada" id="morada" name="morada"><br><br>
+
+            <input type="submit" value="Salvar">
+        </form>
+    
+    <h1>Encomendas</h1>
+    
+    <table id="encomendasTable">
+        <thead>
+            <tr>
+                <th>Nº Encomenda</th>
+                <th>Data</th>
+                <th>Estado</th>
+                <th>Total</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <div id="extra_info"></div>
+    </table>
+
+
+
+
+    <script src="scripts/script.js"></script>
+    <script src="scripts/script_login.js"></script>
+    <script src="scripts/script_conta.js"></script>
+    <script src="scripts/encomendas_c.js"></script>
+</body>
+</html>

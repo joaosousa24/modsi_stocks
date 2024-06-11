@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumo Carrinho</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<script>
+	function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cname) === 0) {
+            return JSON.parse(c.substring(cname.length, c.length));
+        }
+    }
+    return null;
+}
+if(!getCookie('user_id') && !getCookie('func')){
+
+	window.location.href='/index.html';
+
+}
+
+
+else if(getCookie('func')){
+    const func = getCookie('func');
+ 	
+    
+	//alert(func[0].Cargo);
+   	if(func[0].Cargo!=3){
+		window.location.href='/funcionario.html';
+
+	}
+
+    }
+
+
+</script>
+
+
+<body>
+    <header>
+        <h1>Carrinho</h1>
+        <div class="cart-icon" onclick="toggleCartDropdown()">
+            🛒<span id="cart-count">0</span>
+        </div>
+        <div id="cart-dropdown" class="dropdown">
+            <ul id="cart-items"></ul>
+            <button onclick="finalizePurchase()">Finalizar Compra</button>
+        </div>
+        <div id="login-container">
+            <button id="login-button" class="bt_login" onclick="toggleLoginDropdown()">Login</button>
+            <button id="logout-button" class="bt_logout" style="display: none;" onclick="logout_f()">Logout</button>
+            <button id="client-button" class="bt_client" style="display: none;" onclick="client_bt()">A minha Conta</button>
+
+            
+	    <div id="login-dropdown" class="dropdown-content">
+            <!-- Conteúdo do dropdown de login -->
+            <form id="login-form">
+                <label for="email">Email:</label>
+                <input type="text" class ="login_input" id="email" name="email">
+                <label for="password">Password:</label>
+                <input type="password" class ="login_input" id="password" name="password">
+                <button type="submit">Login</button>
+            </form>
+            <button onclick="redirectToRegister()">Create Account</button>
+        </div>
+        </div>
+    </header>
+    <main>
+<div class="redirect-div">
+	<p><button id="redirectButton" class="redirect-button">
+        <span class="arrow"></span>Voltar
+	</button>
+	</p>
+
+	</div>
+	
+	
+
+        <div id="resumo_carrinho">
+
+            <table id="tabela-produtos">
+                <thead>
+                    <tr>
+                        <th class="coluna-imagem">Imagem</th>
+                        <th class="coluna-produto">Produto</th>
+                        <th class="coluna-quantidade">Quantidade</th>
+                        <th class="coluna-preco">Preço</th>
+                    </tr>
+                    
+                                        
+                </thead>
+                <tbody>
+                    
+
+                </tbody>
+            </table>
+            <table>
+                <td colspan="3" style="text-align: right; font-weight: bold;">Total</td>
+                <td id="total-preco" style="font-weight: bold;"></td>
+            </table>
+
+        </div>
+        <div id="user-info"></div>
+        
+    </main>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/script_login.js"></script>
+    <script src="scripts/purchase.js"></script>
+    <script src="scripts/script_conta.js"></script>
+</body>
+</html>

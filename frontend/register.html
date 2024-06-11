@@ -1,0 +1,42 @@
+ <!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/styles_reg.css">
+   
+</head>
+<body>
+    <div class="container">
+        <h1>Create Account</h1>
+        <form id="register-form" onsubmit="submitForm(event)">
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" name="email" required>
+
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" name="password" required>
+
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm_password" required>
+            
+	    <label for="empresa">Nome Empresa:</label>
+            <input type="text" id="empresa" name="empresa" required>
+
+	    <label for="nipc">Número de Identificação de Pessoa Coletiva:</label>
+            <input type="number" id="nipc" name="nipc" required>
+
+	    <label for="morada">Morada:</label>
+            <input type="text" id="morada" name="morada" required>
+
+	
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+<script src="scripts/script_register.js"></script>
+
+    
+</body>
+</html>
+

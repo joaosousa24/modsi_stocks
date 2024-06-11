@@ -1,0 +1,83 @@
+ <!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/styles_reg.css">
+   
+</head>
+
+<script>
+	function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(cname) === 0) {
+            return JSON.parse(c.substring(cname.length, c.length));
+        }
+    }
+    return null;
+}
+if(!getCookie('user_id') && !getCookie('func')){
+
+	window.location.href='/index.html';
+
+}
+if(getCookie('user_id') ){
+
+	window.location.href='/index.html';
+
+}
+
+
+
+else if(getCookie('func')){
+    const func = getCookie('func');
+ 	
+    
+	//alert(func[0].Cargo);
+   	if(func[0].Cargo==1 || func[0].Cargo==2){
+		window.location.href='/funcionario.html';
+
+	}
+
+    }
+
+
+</script>
+
+
+<body>
+    <div class="container">
+        <h1>Criar Conta Funcionário</h1>
+        <form id="register-form" onsubmit="submitForm(event)">
+	    <label for="register-nome">Nome:</label>
+            <input type="nome" id="register-nome" name="nome" required>
+
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" name="email" required>
+
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" name="password" required>
+
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm_password" required>
+            
+	    <label for="cargo">Cargo:</label>
+            <input type="number" id="cargo" name="cargo" min="1" max="2" required>
+	
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+<script src="scripts/script_register_func.js"></script>
+
+    
+</body>
+</html>
