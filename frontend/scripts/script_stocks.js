@@ -22,7 +22,7 @@ async function fetchStock() {
            row.insertCell(3).innerText = prod.preco + " €";
            row.insertCell(4).innerText = prod.Quantidade;
 
-          const Cell = row.insertCell(5); n
+          const Cell = row.insertCell(5); 
           const form = document.createElement('form'); 
 
           const input = document.createElement('input'); 
